@@ -1,4 +1,4 @@
-package TestsBoard;
+package Main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,7 +29,7 @@ import Core.Window;
  * 
  */
 
-public class TestNewBoard {
+public class Main {
 
 	static Board t = new Board();
 	static Window f = new Window(t);

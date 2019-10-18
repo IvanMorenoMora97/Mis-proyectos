@@ -1,6 +1,8 @@
 package Clases;
 
-public class Maquines extends Aules {
+import java.io.Serializable;
+
+public class Maquines extends Aules implements Serializable{
 
 	private String nom;
 	private String processador;

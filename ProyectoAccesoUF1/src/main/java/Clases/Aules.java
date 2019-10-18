@@ -10,19 +10,18 @@ public class Aules implements Serializable {
 	private boolean aireacondicionat;
 	private ArrayList<Maquines> maquines = new ArrayList<Maquines>();
 
-	
-	public Aules () {}
-	
-	public Aules(String nom, long capacitat, boolean aire ,Maquines maquina) {
-		
+	public Aules() {
+	}
+
+	public Aules(String nom, long capacitat, boolean aire, ArrayList<Maquines> maquina) {
+
 		this.nom = nom;
 		this.aireacondicionat = aire;
 		this.capacitat = capacitat;
-		this.maquines.add(maquina);
-		
+		this.maquines = maquina;
+
 	}
-	
-	
+
 	// METODES
 	public String getNom() {
 		return nom;
@@ -56,22 +55,16 @@ public class Aules implements Serializable {
 		this.maquines = maquines;
 	}
 
-	
 	public void visualitzar() {
-		
+
 		System.out.println(toString());
-		
+
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "[\nnom=" + nom + ", \ncapacitat=" + capacitat + ", \naireacondicionat=" + aireacondicionat
 				+ ", maquines=" + maquines + "]";
 	}
-	
-	
-
-	
 
 }

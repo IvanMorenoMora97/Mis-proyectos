@@ -63,12 +63,12 @@ public class Main {
 
 			case 6:
 				// COMPRAR MAQUINA
-				ComprarMaquina.comprarMaquina(); // ARREGLAR INTRODUCE EL OBJETO PER MAL
+				ComprarMaquina.comprarMaquina(); // FALTA HACER QUE NO MODIFIQUE LOS CAMPOS DE AULA
 				break;
 
 			case 7:
 				// HABILITAR AIRE ACONDICIONAT 
-				switchAC.habilitarAire("aules.json");	//HABILITAR Y DESHABILITAR ARREGLADO FALTA REESCRIBIRLO
+				switchAC.habilitarAire("aules.json");	//ACABAR
 				break;
 				
 			case 8: 

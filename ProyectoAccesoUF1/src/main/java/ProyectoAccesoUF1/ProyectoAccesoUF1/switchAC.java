@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,6 +16,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import Clases.Aules;
+import Clases.Maquines;
 
 public class switchAC {
 
@@ -21,82 +24,70 @@ public class switchAC {
 		Scanner reader = new Scanner(System.in);
 
 		String NAula = null;
-
+		ArrayList<Maquines> maquinitas = new ArrayList<Maquines>();
 		System.out.println("Escriu el nom de l'aula per ha habilitar o deshabilitar l'aire acondicionat: ");
 		NAula = reader.nextLine();
+
+		
+		// METER TODO EL FICHERO EN UN ARRAY Y LUEGO AÑADIR EL NUEVO Y VOVLER A GRABAR
 
 		JSONParser parser = new JSONParser();
 		Object obj;
 
 		try {
 
-			obj = parser.parse(new FileReader(FJSON));
+			obj = parser.parse(new FileReader("aules.json"));
 
-			JSONArray aules = (JSONArray) obj;
+			JSONArray array = (JSONArray) obj;
 
-			for (Object o2 : aules) {
+			for (Object o : array) {
 
-				JSONObject aules2 = (JSONObject) o2;
+				JSONObject aulitas = (JSONObject) o;
 
-				String name = (String) aules2.get("nom");
-				long capacitat = Long.parseLong(aules2.get("capacitat").toString());
-				boolean aireacondicionat = Boolean.parseBoolean(aules2.get("aireacondicionat").toString());
+				String name = (String) aulitas.get("nom");
+				long capacitat = Long.parseLong(aulitas.get("capacitat").toString());
+				boolean aire = Boolean.parseBoolean(aulitas.get("aireacondicionat").toString());
 
-				if (NAula.equals(name)) {
+				JSONArray machine = (JSONArray) aulitas.get("maquines");
 
-					if (aireacondicionat == false) {
+				for (Iterator iterator = machine.iterator(); iterator.hasNext();) {
 
-						aireacondicionat = true;
+					Object objeto = (Object) iterator.next();
+					JSONObject maquina2 = (JSONObject) objeto;
 
-					}
+					String nom = (String) maquina2.get("nom");
+					String proce = (String) maquina2.get("processador");
+					boolean graf = Boolean.parseBoolean(maquina2.get("grafica").toString());
 
-					else {
-
-						aireacondicionat = false;
-
-					}
-
-				}
-
-				// MAQUINES JSONARRAY
-
-				JSONArray maquinas = (JSONArray) aules2.get("maquines");
-
-				for (Object s : maquinas) {
-
-					System.out.println("Nom: " + name + ", capacitat: " + capacitat + ", aireacondicionat: "
-							+ aireacondicionat + ", maquines: " + s);
+					Maquines mm = new Maquines(nom, proce, graf);
+					maquinitas.add(mm);
 
 				}
-				
-				
-				//ESCRIURE AL FITXER
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+
+				Aules aul = new Aules(name, capacitat, aire, maquinitas);
 
 			}
 
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-
-		} catch (ParseException e) {
+		} catch (Exception e) {
 
 			e.printStackTrace();
 
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 	}
 

@@ -24,11 +24,15 @@ public class switchAC {
 		Scanner reader = new Scanner(System.in);
 
 		String NAula = null;
+		ArrayList<Aules> aulas = new ArrayList<Aules>();
 		ArrayList<Maquines> maquinitas = new ArrayList<Maquines>();
+
+		Maquines maquina = null;
+		Aules aula = null;
+
 		System.out.println("Escriu el nom de l'aula per ha habilitar o deshabilitar l'aire acondicionat: ");
 		NAula = reader.nextLine();
 
-		
 		// METER TODO EL FICHERO EN UN ARRAY Y LUEGO AÑADIR EL NUEVO Y VOVLER A GRABAR
 
 		JSONParser parser = new JSONParser();
@@ -60,11 +64,10 @@ public class switchAC {
 					boolean graf = Boolean.parseBoolean(maquina2.get("grafica").toString());
 
 					Maquines mm = new Maquines(nom, proce, graf);
-					maquinitas.add(mm);
-
+					// maquinitas.add(mm);
+					Aules aul = new Aules(name, capacitat, aire, mm);
+					aulas.add(aul);
 				}
-
-				Aules aul = new Aules(name, capacitat, aire, maquinitas);
 
 			}
 
@@ -73,21 +76,71 @@ public class switchAC {
 			e.printStackTrace();
 
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+		// GRABAR ARRAYLIST EN EL FICHERO
+
+		try (FileWriter file = new FileWriter("aules.json", false)) {
+
+			JSONArray lista = new JSONArray();
+
+			for (Aules aa : aulas) {
+
+				Map<String, Object> aulitas = new LinkedHashMap<String, Object>();
+
+				aulitas.put("nom", aa.getNom());
+				aulitas.put("capacitat", aa.getCapacitat());
+				
+				//HABILITAR O DESHABILITAR AIRE ACONDICIONADO
+				if(aa.getNom().equals(NAula)) {
+					
+					if(aa.getAireacondicionat()==true) {
+						
+						aa.setAireacondicionat(false);
+						
+					}
+					else {
+						
+						aa.setAireacondicionat(true);
+						
+					}
+					
+				}
+				
+				aulitas.put("aireacondicionat", aa.getAireacondicionat());
+
+				lista.add(aulitas);
+				// MAQUINES JSONARRAY
+
+				maquinitas = aa.getMaquines();
+
+				JSONArray maquinas = new JSONArray();
+
+				for (Maquines m : maquinitas) {
+
+					Map<String, Object> maquinotes = new LinkedHashMap<String, Object>();
+
+					maquinotes.put("nom", m.getNom());
+					maquinotes.put("processador", m.getProcessador());
+					maquinotes.put("grafica", m.getGrafica());
+
+					maquinas.add(maquinotes);
+
+				}
+
+				aulitas.put("maquines", maquinas);
+
+			}
+
+			// ESCRIURE AL FITXER
+
+			file.write(lista.toJSONString());
+			file.flush();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
 
 	}
 

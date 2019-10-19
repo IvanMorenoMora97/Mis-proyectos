@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class JubilarProfessor {
+public class jubilarProfessor {
 
 	public static void Jubilar(String fichero) {
 		Scanner reader = new Scanner(System.in);

@@ -18,13 +18,14 @@ import org.json.simple.parser.ParseException;
 import Clases.Aules;
 import Clases.Maquines;
 
-public class ComprarMaquina {
+public class comprarMaquina {
 
 	public static void comprarMaquina() {
 		Scanner reader = new Scanner(System.in);
 
 		ArrayList<Aules> aulas = new ArrayList<Aules>();
 		ArrayList<Maquines> maquinitas = new ArrayList<Maquines>();
+
 		Maquines maquina = null;
 		Aules aula = null;
 
@@ -82,8 +83,8 @@ public class ComprarMaquina {
 		}
 
 		maquina = new Maquines(nomMaquina, processador, grafica);
-		maquinitas.add(maquina);
-		aula = new Aules(nomAula, capacitatAula, aireacondicionat, maquinitas);
+		// maquinitas.add(maquina);
+		aula = new Aules(nomAula, capacitatAula, aireacondicionat, maquina);
 
 		aulas.add(aula);
 
@@ -118,11 +119,10 @@ public class ComprarMaquina {
 					boolean graf = Boolean.parseBoolean(maquina2.get("grafica").toString());
 
 					Maquines mm = new Maquines(nom, proce, graf);
-					maquinitas.add(mm);
-
+					// maquinitas.add(mm);
+					Aules aul = new Aules(name, capacitat, aire, mm);
+					aulas.add(aul);
 				}
-
-				Aules aul = new Aules(name, capacitat, aire, maquinitas);
 
 			}
 
@@ -132,70 +132,9 @@ public class ComprarMaquina {
 
 		}
 
-		/*
-		 * 
-		 * 
-		 * // LEER FICHERO DEL JSON Y CREAR LAS AULAS Y AÑADIRLAS A UN ARRAYLIST try {
-		 * 
-		 * obj = parser.parse(new FileReader("aules.json"));
-		 * 
-		 * JSONArray aules = (JSONArray) obj;
-		 * 
-		 * for (Object o2 : aules) {
-		 * 
-		 * JSONObject aules2 = (JSONObject) o2;
-		 * 
-		 * String name = (String) aules2.get("nom"); long capacitat =
-		 * Long.parseLong(aules2.get("capacitat").toString()); boolean aire =
-		 * Boolean.parseBoolean(aules2.get("aireacondicionat").toString());
-		 * 
-		 * // MAQUINES JSONARRAY
-		 * 
-		 * JSONArray maquinas = (JSONArray) aules2.get("maquines");
-		 * 
-		 * for (Object o : maquinas) {
-		 * 
-		 * JSONObject maquinitas = (JSONObject) o;
-		 * 
-		 * String nom = (String) maquinitas.get("nom"); String proces = (String)
-		 * maquinitas.get("processador"); boolean grafi =
-		 * Boolean.parseBoolean(maquinitas.get("grafica").toString());
-		 * 
-		 * maquina = new Maquines(nom, proces, grafi);
-		 * 
-		 * }
-		 * 
-		 * aula = new Aules(name, capacitat, aire, maquina);
-		 * 
-		 * aulas.add(aula);
-		 * 
-		 * }
-		 * 
-		 * } catch (FileNotFoundException e) {
-		 * 
-		 * e.printStackTrace();
-		 * 
-		 * } catch (IOException e) {
-		 * 
-		 * e.printStackTrace();
-		 * 
-		 * } catch (ParseException e) {
-		 * 
-		 * e.printStackTrace();
-		 * 
-		 * }
-		 */
-
-		// MOSTRAR MAQUINAS DEL ARRAY
-		for (Aules aules : aulas) {
-
-			System.out.println(aules);
-
-		}
-
 		// GRABAR ARRAYLIST EN EL FICHERO
 
-		try (FileWriter file = new FileWriter("aules.json")) {
+		try (FileWriter file = new FileWriter("aules.json", false)) {
 
 			JSONArray lista = new JSONArray();
 

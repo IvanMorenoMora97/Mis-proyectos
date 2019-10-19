@@ -2,7 +2,7 @@ package Clases;
 
 import java.io.Serializable;
 
-public class Maquines extends Aules implements Serializable{
+public class Maquines extends Aules implements Serializable, Cloneable{
 
 	private String nom;
 	private String processador;
@@ -17,6 +17,28 @@ public class Maquines extends Aules implements Serializable{
 		this.nom = nom;
 		this.processador = processador;
 		this.grafica = grafica;
+	}
+	
+	//CLONADOR
+	
+	@Override
+	public Maquines clone() {
+
+		Maquines novaMaquina;
+
+		try {
+			
+			novaMaquina = (Maquines) super.clone();
+				
+			return novaMaquina;
+
+		} catch (CloneNotSupportedException e) {
+
+			e.printStackTrace();
+			return null;
+
+		}
+
 	}
 
 	// METODES

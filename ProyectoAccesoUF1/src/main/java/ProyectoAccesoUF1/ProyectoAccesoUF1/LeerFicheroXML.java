@@ -9,7 +9,7 @@ import javax.xml.bind.Unmarshaller;
 import Clases.Alumnes;
 import Clases.INS;
 
-public class LeerFicheroXML {
+public class leerFicheroXML {
 
 	public static void LeerXML(String XMLAlumnes) {
 
@@ -25,7 +25,7 @@ public class LeerFicheroXML {
 			
 			INS institut = (INS) jaxbUnmarshaller.unmarshal(file);
 			
-			System.out.println(institut);
+			institut.visualitzar();
 			
 			
 			

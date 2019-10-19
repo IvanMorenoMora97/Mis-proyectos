@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class AfegirProfessor {
+public class afegirProfessor {
 
 	public static void Afegir(String fichero) {
 		Scanner reader = new Scanner(System.in);

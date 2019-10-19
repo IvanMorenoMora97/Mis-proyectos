@@ -14,7 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class LeerFicheroJSON {
+public class leerFicheroJSON {
 
 	public static void LeerJSON(String FJSON) {
 

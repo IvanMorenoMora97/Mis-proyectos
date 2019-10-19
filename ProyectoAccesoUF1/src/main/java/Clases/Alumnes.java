@@ -8,15 +8,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = {"nom", "cognom", "DNI", "adreça", "mail", "telefonos"})
+@XmlType(propOrder = { "nom", "cognoms", "DNI", "adreca", "telefonos", "mail" })
 public class Alumnes {
 
 	private String nom;
-	private String cognom;
-	private int DNI;
-	private String adreça;
+	private String cognoms;
+	private String DNI;
+	private String adreca;
 	private String mail;
-	private ArrayList<Telefons> telefonos = new ArrayList<Telefons>();
+	private ArrayList<Integer> telefonos = new ArrayList<Integer>();
+
+	// CONSTRUCTOR
+
+	public Alumnes(String nom, String cognoms, String dNI, String adreca, String mail, ArrayList<Integer> telefonos) {
+		super();
+		this.nom = nom;
+		this.cognoms = cognoms;
+		this.DNI = dNI;
+		this.adreca = adreca;
+		this.mail = mail;
+		this.telefonos = telefonos;
+	}
+	
+	public Alumnes() {}
 
 	// METODOS
 	@XmlElement(name = "nom")
@@ -29,30 +43,30 @@ public class Alumnes {
 	}
 
 	@XmlElement(name = "cognoms")
-	public String getCognom() {
-		return cognom;
+	public String getCognoms() {
+		return cognoms;
 	}
 
-	public void setCognom(String cognom) {
-		this.cognom = cognom;
+	public void setCognoms(String cognom) {
+		this.cognoms = cognom;
 	}
 
 	@XmlElement(name = "DNI")
-	public int getDNI() {
+	public String getDNI() {
 		return DNI;
 	}
 
-	public void setDNI(int dNI) {
+	public void setDNI(String dNI) {
 		DNI = dNI;
 	}
 
-	@XmlElement(name = "adreça")
-	public String getAdreça() {
-		return adreça;
+	@XmlElement(name = "adreca")
+	public String getAdreca() {
+		return adreca;
 	}
 
-	public void setAdreça(String adreça) {
-		this.adreça = adreça;
+	public void setAdreca(String adreça) {
+		this.adreca = adreça;
 	}
 
 	@XmlElement(name = "mail")
@@ -65,12 +79,25 @@ public class Alumnes {
 	}
 
 	@XmlElementWrapper(name = "telefons")
-	public ArrayList<Telefons> getTelefonos() {
+	@XmlElement(name = "telefon")
+	public ArrayList<Integer> getTelefonos() {
 		return telefonos;
 	}
 
-	public void setTelefonos(ArrayList<Telefons> telefonos) {
+	public void setTelefonos(ArrayList<Integer> telefonos) {
 		this.telefonos = telefonos;
+	}
+
+	public void visualitzar() {
+
+		System.out.println(toString());
+
+	}
+
+	@Override
+	public String toString() {
+		return "[\n nom=" + nom + ", cognoms=" + cognoms + ", DNI=" + DNI + ", adreça=" + adreca + ", mail=" + mail
+				+ ", \n telefonos=" + telefonos + "]";
 	}
 
 }

@@ -13,12 +13,13 @@ public class Aules implements Serializable {
 	public Aules() {
 	}
 
-	public Aules(String nom, long capacitat, boolean aire, ArrayList<Maquines> maquina) {
+	public Aules(String nom, long capacitat, boolean aire, Maquines maquina) {
 
 		this.nom = nom;
 		this.aireacondicionat = aire;
 		this.capacitat = capacitat;
-		this.maquines = maquina;
+		this.maquines.add(maquina);
+		//= maquina;
 
 	}
 

@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LeerFicheroTexto {
+public class leerFicheroTexto {
 	
 	public static void LeerTexto(String PFitxer) {
 		

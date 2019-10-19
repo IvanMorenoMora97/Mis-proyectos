@@ -31,6 +31,12 @@ public class Alumnes {
 	}
 	
 	public Alumnes() {}
+	
+	public void add(int telefono) {
+		
+		this.telefonos.add(telefono);
+		
+	}
 
 	// METODOS
 	@XmlElement(name = "nom")

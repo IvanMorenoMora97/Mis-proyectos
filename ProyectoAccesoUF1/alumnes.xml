@@ -3,16 +3,6 @@
     <nom> Institut Sabadell </nom>
     <alumnes>
         <alumne>
-            <nom>Joan</nom>
-            <cognoms>Perez Rubarte</cognoms>
-            <DNI>48923793D</DNI>
-            <adreca>Carrer de les Flors, 4, Sabadell</adreca>
-            <telefons>
-                <telefon>665340559</telefon>
-            </telefons>
-            <mail>joanperez@gmail.com</mail>
-        </alumne>
-        <alumne>
             <nom>Marco</nom>
             <cognoms>Frias Estrella</cognoms>
             <DNI>48923794E</DNI>
@@ -67,26 +57,6 @@
                 <telefon>888888888</telefon>
             </telefons>
             <mail>perotunoeresprofessor@gmail.com</mail>
-        </alumne>
-        <alumne>
-            <nom>ivan</nom>
-            <cognoms>moreno mora</cognoms>
-            <DNI>1222121121D</DNI>
-            <adreca>calle falsa</adreca>
-            <telefons>
-                <telefon>1234</telefon>
-                <telefon>5678</telefon>
-                <telefon>91011</telefon>
-            </telefons>
-            <mail>asdsasdasddsaasd@gmail.com</mail>
-        </alumne>
-        <alumne>
-            <nom>asddsadas</nom>
-            <cognoms>sasdaasd</cognoms>
-            <DNI>assdaasd</DNI>
-            <adreca>asasasdsad</adreca>
-            <telefons/>
-            <mail>asdasdasdsad</mail>
         </alumne>
     </alumnes>
 </institut>

@@ -20,6 +20,8 @@ public class Main {
 			System.out.println("7. Habilitar aire acondicionat.");
 			System.out.println("8. Canviar màquina.");
 			System.out.println("9. Afegir Alumne.");
+			System.out.println("10. Eliminar Alumne.");
+			System.out.println("11. Afegir Telefon.");
 			opcion = reader.nextInt();
 
 			switch (opcion) {
@@ -83,11 +85,12 @@ public class Main {
 				break;
 				
 			case 10:
+				//ELIMINAR UN ALUMNE
+				alCarrer.Eliminar();
 				break;
 				
 			case 11:
-				//ELIMINAR UN ALUMNE
-				alCarrer.Eliminar();
+				afegirTelefon.Afegir();
 				break;
 			}
 

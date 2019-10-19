@@ -3,6 +3,7 @@ package ProyectoAccesoUF1.ProyectoAccesoUF1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.xml.bind.JAXBContext;
@@ -19,20 +20,14 @@ public class alCarrer {
 		Scanner reader = new Scanner(System.in);
 		INS ins = null;
 		Alumnes alumno = null;
-		
-		
+
 		String eliminar = null;
-		
-		
-		
+
 		System.out.println("Indica el nom del alumne a eliminar: ");
-		eliminar=reader.nextLine();
-		
-		
-		
-		
-		//LEER FICHERO XML
-		
+		eliminar = reader.nextLine();
+
+		// LEER FICHERO XML
+
 		try {
 
 			// CREAR FICHERO
@@ -47,56 +42,58 @@ public class alCarrer {
 			// LLEGIR LA CLASSE I CANVIAR EL TIPUS DE CLASSE
 			ins = (INS) jaxbUnmarshaller.unmarshal(file);
 
-			// AFEGIM L'ALUMNE PREVIAMENT CREAT
-			ins.add(alumno);
-			System.out.println(ins.getNom() + "    " + ins.getAlumnes());
-
 		} catch (JAXBException e) {
 
 			e.printStackTrace();
 
 		}
-		
-		
-		
+
+		// COMPROBAMOS EN QUE INDICE DEL ARRAY ESTA EL ALUMNO
+		int indice = 0;
+		for (Alumnes a : ins.getAlumnes()) {
+
+			if (a.getNom().equals(eliminar)) {
+
+				indice = ins.getAlumnes().indexOf(a);
+
+			}
+
+		}
+
+		//ELIMINAMOS AL ALUMNO DEL ARRAY MEDIANTE EL INDICE OBTENIDO
+		ins.getAlumnes().remove(indice);
+
 		// ESCRIBIR FICHERO XML
 
-				try {
+		try {
 
-					// CREAR FITXER
-					File file = new File("alumnes.xml");
+			// CREAR FITXER
+			File file = new File("alumnes.xml");
 
-					// CREAR NOU CONTEXT QUE SERÀ LA CLASSE ARREL
-					JAXBContext jaxbContext = JAXBContext.newInstance(INS.class);
+			// CREAR NOU CONTEXT QUE SERÀ LA CLASSE ARREL
+			JAXBContext jaxbContext = JAXBContext.newInstance(INS.class);
 
-					// CREAR CLASSE MARSHALLER PER A ESCRIURE
-					Marshaller marshallerObj = jaxbContext.createMarshaller();
+			// CREAR CLASSE MARSHALLER PER A ESCRIURE
+			Marshaller marshallerObj = jaxbContext.createMarshaller();
 
-					// POSAR PROPIETATS
-					marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			// POSAR PROPIETATS
+			marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-					marshallerObj.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+			marshallerObj.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
 
-					// GUARDAR AL FITXER EL NOU INSTITUT AMB ELS NOUS ALUMNES
-					marshallerObj.marshal(ins, new FileOutputStream(file));
+			// GUARDAR AL FITXER EL NOU INSTITUT AMB ELS NOUS ALUMNES
+			marshallerObj.marshal(ins, new FileOutputStream(file));
 
-				} catch (JAXBException e) {
+		} catch (JAXBException e) {
 
-					e.printStackTrace();
+			e.printStackTrace();
 
-				} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 
-					e.printStackTrace();
+			e.printStackTrace();
 
-				}
-		
-		
-		
-		
-		
-		
-		
-		
+		}
+
 	}
 
 }

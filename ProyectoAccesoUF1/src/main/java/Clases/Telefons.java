@@ -1,12 +1,14 @@
 package Clases;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
 @XmlType(propOrder = { "telefons" })
-public class Telefons {
+public class Telefons implements Serializable{
 
 	private int telefons;
 

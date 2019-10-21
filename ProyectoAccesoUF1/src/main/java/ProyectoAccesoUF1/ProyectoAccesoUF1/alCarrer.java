@@ -23,7 +23,7 @@ public class alCarrer {
 
 		String eliminar = null;
 
-		System.out.println("Indica el nom del alumne a eliminar: ");
+		System.out.println("Indica el DNI del alumne a eliminar: ");
 		eliminar = reader.nextLine();
 
 		// LEER FICHERO XML
@@ -52,7 +52,7 @@ public class alCarrer {
 		int indice = 0;
 		for (Alumnes a : ins.getAlumnes()) {
 
-			if (a.getNom().equals(eliminar)) {
+			if (a.getDNI().equals(eliminar)) {
 
 				indice = ins.getAlumnes().indexOf(a);
 

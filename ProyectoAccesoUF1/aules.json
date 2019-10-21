@@ -1,1 +1,46 @@
-[{"nom":"C15","capacitat":1,"aireacondicionat":true,"maquines":[{"nom":"6-7-8","processador":"p0","grafica":false}]},{"nom":"C10","capacitat":30,"aireacondicionat":false,"maquines":[{"nom":"2-3-4","processador":"i10","grafica":true}]},{"nom":"1.6","capacitat":20,"aireacondicionat":true,"maquines":[{"nom":"1-6-1","processador":"i5","grafica":false}]},{"nom":"1.6","capacitat":20,"aireacondicionat":true,"maquines":[{"nom":"1-6-2","processador":"i3","grafica":false}]},{"nom":"1.6","capacitat":20,"aireacondicionat":true,"maquines":[{"nom":"1-6-3","processador":"i5","grafica":true}]},{"nom":"C4","capacitat":25,"aireacondicionat":true,"maquines":[{"nom":"3-4-1","processador":"i5","grafica":false}]},{"nom":"C4","capacitat":25,"aireacondicionat":true,"maquines":[{"nom":"3-4-2","processador":"i3","grafica":false}]},{"nom":"C4","capacitat":25,"aireacondicionat":true,"maquines":[{"nom":"3-4-3","processador":"i5","grafica":true}]}]
+[
+	{ 
+"nom":"1.6",
+"capacitat":20,
+"aireacondicionat":true,
+"maquines": [
+		{
+			"nom":"1-6-1",
+			"processador":"i5",
+			"grafica":false
+		},
+{
+			"nom":"1-6-2",
+			"processador":"i3",
+			"grafica":false
+		},
+{
+			"nom":"1-6-3",
+			"processador":"i5",
+			"grafica":true
+		}
+	        ]
+},
+{ 
+"nom":"C4",
+"capacitat":25,
+"aireacondicionat":true,
+"maquines": [
+		{
+			"nom":"3-4-1",
+			"processador":"i5",
+			"grafica":false
+		},
+{
+			"nom":"3-4-2",
+			"processador":"i3",
+			"grafica":false
+		},
+{
+			"nom":"3-4-3",
+			"processador":"i5",
+			"grafica":true
+		}
+	        ]
+}
+]

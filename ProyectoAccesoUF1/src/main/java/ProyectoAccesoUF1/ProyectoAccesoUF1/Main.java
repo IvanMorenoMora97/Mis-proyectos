@@ -10,7 +10,8 @@ public class Main {
 
 		int opcion = 0;
 		do {
-
+			
+			System.out.println("SEL·LECCIONA UNA OPCIÓ");
 			System.out.println("1. Leer fichero de texto.");
 			System.out.println("2. Leer fichero XML.");
 			System.out.println("3. Leer fichero JSON.");
@@ -22,6 +23,9 @@ public class Main {
 			System.out.println("9. Afegir Alumne.");
 			System.out.println("10. Eliminar Alumne.");
 			System.out.println("11. Afegir Telefon.");
+			System.out.println("12. Crear una classe.");
+			System.out.println("13. Llegir la classe.");
+			System.out.println("14. Sortir del menú.");
 			opcion = reader.nextInt();
 
 			switch (opcion) {
@@ -90,11 +94,24 @@ public class Main {
 				break;
 				
 			case 11:
+				//AFEGIR TELEFON
 				afegirTelefon.Afegir();
+				break;
+				
+			case 12:
+				//CREAR CLASSE
+				crearClasse.crear();
+				break;
+				
+			case 13:
+				//VISUALITZAR CLASSE
+				System.out.println();
+				leerDAT.leer("classes.dat");
+				System.out.println();
 				break;
 			}
 
-		} while (opcion != 15);
+		} while (opcion != 14);
 		System.out.println("Heu sortit del menú.");
 
 		reader.close();

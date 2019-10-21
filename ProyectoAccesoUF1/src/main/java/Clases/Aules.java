@@ -24,6 +24,12 @@ public class Aules implements Serializable {
 	}
 
 	// METODES
+	public void add(Maquines m) {
+		
+		this.maquines.add(m);
+		
+	}
+	
 	public String getNom() {
 		return nom;
 	}

@@ -23,7 +23,7 @@ public class canviaMaquina {
 		Scanner reader = new Scanner(System.in);
 
 		ArrayList<Aules> aulas = new ArrayList<Aules>();
-		ArrayList<Maquines> maquines = new ArrayList<Maquines>();
+		ArrayList<Maquines> maquinitas = new ArrayList<Maquines>();
 		Maquines mm = null;
 		String MCanviar = null;
 
@@ -78,15 +78,77 @@ public class canviaMaquina {
 			e.printStackTrace();
 
 		}
-		
-		//MOSTRAR AULAS
+
+		// SELECCIONAR MAQUINA QUE VAMOS A CAMBIAR
+		int cont = 1;
+
 		for (Aules a : aulas) {
-			
-			System.out.println(a);
-			
+
+			for (Maquines m : a.getMaquines()) {
+
+				if (m.getNom().equals(MCanviar)) {
+
+					mm = m;
+
+				}
+
+			}
+
+			if (a.getNom().equals(ACanviar) && cont != 0) {
+
+				a.add(mm);
+				cont--;
+			}
+
 		}
-		
-		
+
+		// GRABAR ARRAYLIST EN EL FICHERO
+
+		try (FileWriter file = new FileWriter("aules.json", false)) {
+
+			JSONArray lista = new JSONArray();
+
+			for (Aules aa : aulas) {
+
+				Map<String, Object> aulitas = new LinkedHashMap<String, Object>();
+
+				aulitas.put("nom", aa.getNom());
+				aulitas.put("capacitat", aa.getCapacitat());
+				aulitas.put("aireacondicionat", aa.getAireacondicionat());
+
+				lista.add(aulitas);
+				// MAQUINES JSONARRAY
+
+				maquinitas = aa.getMaquines();
+
+				JSONArray maquinas = new JSONArray();
+
+				for (Maquines m : maquinitas) {
+
+					Map<String, Object> maquinotes = new LinkedHashMap<String, Object>();
+
+					maquinotes.put("nom", m.getNom());
+					maquinotes.put("processador", m.getProcessador());
+					maquinotes.put("grafica", m.getGrafica());
+
+					maquinas.add(maquinotes);
+
+				}
+
+				aulitas.put("maquines", maquinas);
+
+			}
+
+			// ESCRIURE AL FITXER
+
+			file.write(lista.toJSONString());
+			file.flush();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
 
 	}
 

@@ -1,5 +1,6 @@
 package Clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -9,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
 @XmlType(propOrder = { "nom", "cognoms", "DNI", "adreca", "telefonos", "mail" })
-public class Alumnes {
+public class Alumnes implements Serializable {
 
 	private String nom;
 	private String cognoms;

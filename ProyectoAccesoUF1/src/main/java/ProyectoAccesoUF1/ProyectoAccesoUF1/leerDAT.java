@@ -1,5 +1,6 @@
 package ProyectoAccesoUF1.ProyectoAccesoUF1;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -12,18 +13,39 @@ public class leerDAT {
 
 		try {
 
-			ObjectInputStream leerDAT = new ObjectInputStream(new FileInputStream(ficheroDAT));
+			FileInputStream fis = new FileInputStream("classes.dat");
+			ObjectInputStream ois = new ObjectInputStream(fis);
 
-			System.out.println((Classe) leerDAT.readObject());
+			Classe c;
 
-			leerDAT.close();
+			try {
+
+				while (true) {
+
+					Object o = ois.readObject();
+
+					if (o instanceof Classe) {
+
+						c = (Classe) o;
+
+						System.out.println(c);
+
+					}
+
+				}
+
+			} catch (EOFException fin) {
+
+				System.out.println("Fi de la lectura");
+				ois.close();
+
+			}
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 
 		}
-
 	}
 
 }

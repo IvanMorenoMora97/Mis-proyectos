@@ -100,7 +100,9 @@ public class Main {
 				
 			case 12:
 				//CREAR CLASSE
+				System.out.println();
 				crearClasse.crear();
+				System.out.println();
 				break;
 				
 			case 13:

@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,7 +33,7 @@ public class crearClasse {
 
 		// CREAR PROFESSOR MEDIANTE LA LECTURA DEL FICHERO
 
-		Professors profe = null;
+		String profe = null;
 
 		ArrayList<String> professores = new ArrayList<String>();
 
@@ -62,14 +63,17 @@ public class crearClasse {
 
 		// CREAMOS EL PROFESSOR DE MANERA RANDOM
 		int random = (int) (Math.random() * professores.size());
-		for (int i = 0; i < professores.size(); i++) {
 
-			if (random == i) {
+		int contador = 0;
+		for (String string : professores) {
 
-				profe = new Professors(professores.get(i));
+			if (contador == random) {
+
+				profe = string;
 
 			}
 
+			contador++;
 		}
 
 		// CREACION DEL AULA
@@ -183,17 +187,21 @@ public class crearClasse {
 
 		Classe classe = new Classe(aula, profe, alumnos);
 
-		ArrayList<Classe> classes = new ArrayList<Classe>();
+		//classe.visualitzar();
 
-		classes.add(classe);
 
 		// GRABAR CLASSE EN FICHERO .DAT
 
 		try {
 
-			ObjectOutputStream escribirDAT = new ObjectOutputStream(new FileOutputStream("classes.dat"));
-			escribirDAT.writeObject(classes);
-			escribirDAT.close();
+			File ff = new File("classes.dat");
+			FileOutputStream fol = new FileOutputStream(ff);
+			ObjectOutputStream oos = new ObjectOutputStream(fol);
+
+			oos.writeObject(classe);
+
+			oos.flush();
+			oos.close();
 
 		} catch (Exception e) {
 

@@ -108,8 +108,6 @@ public class Controlador implements Initializable {
 
 	private boolean valido = true;
 
-	
-
 	// METODO SUMAR CON SUS CONTROLES
 
 	private int sumar(int numero1, int numero2) {
@@ -353,7 +351,7 @@ public class Controlador implements Initializable {
 
 		}
 
-		if (!TResultado5.getText().equals("-") || !valido) {
+		if (!valido) {
 
 			TObjectiu.setText("HAS PERDIDO MAQUINON");
 
@@ -626,7 +624,7 @@ public class Controlador implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -632,11 +632,61 @@ public class Controlador2 implements Initializable {
 
 		}
 
+		else {
+
+			if (operacion1.getText().equals("-")) {
+
+				operacion1.setText("Operación no valida");
+				bloquear();
+			} else {
+
+				if (operacion2.getText().equals("-")) {
+
+					operacion2.setText("Operación no valida");
+					bloquear();
+				} else {
+					if (operacion3.getText().equals("-")) {
+
+						operacion3.setText("Operación no valida");
+						bloquear();
+					} else {
+						if (operacion4.getText().equals("-")) {
+
+							operacion4.setText("Operación no valida");
+							bloquear();
+						} else {
+
+							if (operacion5.getText().equals("-")) {
+
+								operacion5.setText("Operación no valida");
+								bloquear();
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
 	}
 
 	public void bloquear() {
 
-		objetivo.setText("HAS GANADO");
+		if (valido) {
+
+			objetivo.setText("HAS GANADO");
+
+		}
+
+		else {
+
+			objetivo.setText("HAS PERDIDO");
+
+		}
 
 		limpiar.setDisable(true);
 
